@@ -1,5 +1,6 @@
 import {NodePlopAPI} from "plop";
 
+// eslint-disable-next-line import/no-anonymous-default-export
 export default function (plop: NodePlopAPI) {
   plop.setHelper('parsePropsInterface', (propsList: string) => {
     if (!propsList) return '';
