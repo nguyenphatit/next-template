@@ -22,6 +22,18 @@ This project uses [`next/font`](https://nextjs.org/docs/app/building-your-applic
 
 ## Learn More
 
+To generate a page, let run the command line
+
+```bash
+npm run generate
+# or
+yarn generate
+# or 
+pnpm generate
+# or
+bun dev
+```
+
 To learn more about Next.js, take a look at the following resources:
 
 - [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.

@@ -1,9 +1,12 @@
 {{#if clientComponent}}
 "use client"
-{{/if}}
 
+{{/if}}
 {{#if motion}}
 import { motion } from "motion/react"
+{{/if}}
+{{#if addStyle}}
+import "./styles.{{styleType}}"
 {{/if}}
 {{#if props}}
 interface {{pascalCase name}}Props {
