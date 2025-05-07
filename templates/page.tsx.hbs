@@ -1,0 +1,20 @@
+{{#if clientComponent}}
+"use client"
+{{/if}}
+
+{{#if motion}}
+import { motion } from "motion/react"
+{{/if}}
+{{#if props}}
+interface {{pascalCase name}}Props {
+    {{#if propsList}}
+    {{{parsePropsInterface propsList}}}
+    {{else}}
+    // define your props here
+    {{/if}}
+}
+{{/if}}
+
+export default function {{pascalCase name}}Page({{#if props}}props: {{pascalCase name}}Props{{/if}}) {
+  return {{#if motion}}<motion.div>{{pascalCase name}} work!</motion.div>{{else}}<div>{{pascalCase name}} work!</div>{{/if}};
+}
