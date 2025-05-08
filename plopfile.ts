@@ -1,4 +1,4 @@
-import {NodePlopAPI} from "plop";
+import { NodePlopAPI } from "plop";
 
 export default function plop(plop: NodePlopAPI) {
   plop.setHelper('parsePropsInterface', (propsList: string) => {
@@ -105,20 +105,40 @@ export default function plop(plop: NodePlopAPI) {
         message: 'Choose a style type:',
         choices: ['css', 'scss', 'sass', 'less'],
         when: answers => answers.addStyle,
-      }
-    ],
-    actions: [
-      {
-        type: 'add',
-        path: 'app/{{dashCase name}}/page.tsx',
-        templateFile: 'templates/page.tsx.hbs',
       },
       {
-        type: 'add',
-        path: 'app/{{dashCase name}}/styles.{{styleType}}',
-        templateFile: 'templates/styles.hbs',
-        skip: (answers: { addStyle: unknown; }) => !answers.addStyle,
+        type: 'confirm',
+        name: 'addUnitTest',
+        message: 'Add unit test for this page?',
+        default: false,
       }
-    ]
+    ],
+    actions: function (answers) {
+      const actions = [
+        {
+          type: 'add',
+          path: 'app/{{dashCase name}}/page.tsx',
+          templateFile: 'templates/page.tsx.hbs',
+        }
+      ];
+
+      if (answers?.addStyle) {
+        actions.push({
+          type: 'add',
+          path: 'app/{{dashCase name}}/styles.{{styleType}}',
+          templateFile: 'templates/styles.hbs',
+        })
+      }
+
+      if (answers?.addUnitTest) {
+        actions.push({
+          type: 'add',
+          path: 'app/{{dashCase name}}/__test__/{{dashCase name}}.test.tsx',
+          templateFile: 'templates/test.tsx.hbs',
+        })
+      }
+
+      return actions;
+    }
   })
 }

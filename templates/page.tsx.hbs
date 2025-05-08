@@ -16,8 +16,8 @@ interface {{pascalCase name}}Props {
     // define your props here
     {{/if}}
 }
-{{/if}}
 
+{{/if}}
 export default function {{pascalCase name}}Page({{#if props}}props: {{pascalCase name}}Props{{/if}}) {
-  return {{#if motion}}<motion.div>{{pascalCase name}} work!</motion.div>{{else}}<div>{{pascalCase name}} work!</div>{{/if}};
+  return {{#if motion}}<motion.h1>{{pascalCase name}}Page work!</motion.h1>{{else}}<h1>{{pascalCase name}}Page work!</h1>{{/if}};
 }

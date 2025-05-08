@@ -5,6 +5,10 @@
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build",
+    "test": "vitest",
+    "pw": "pnpm exec playwright test",
+    "pw:ui": "pnpm exec playwright test --ui",
+    "pw:report": "pnpm exec playwright show-report",
     "start": "next start",
     "analyze": "ANALYZE=true pnpm build",
     "generate": "cross-env NODE_OPTIONS='--import tsx' plop --plopfile=plopfile.ts",
@@ -18,20 +22,27 @@
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
+    "@playwright/test": "1.52.0",
     "@semantic-release/changelog": "6.0.3",
     "@semantic-release/git": "10.0.1",
     "@tailwindcss/postcss": "^4",
+    "@testing-library/dom": "10.4.0",
+    "@testing-library/react": "16.3.0",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "@vitejs/plugin-react": "4.4.1",
     "cross-env": "7.0.3",
     "eslint": "^9",
     "eslint-config-next": "15.3.2",
+    "jsdom": "26.1.0",
     "motion": "12.10.0",
     "plop": "4.0.1",
     "semantic-release": "24.2.3",
     "tailwindcss": "^4",
     "tsx": "4.19.4",
-    "typescript": "^5"
+    "typescript": "^5",
+    "vite-tsconfig-paths": "5.1.4",
+    "vitest": "3.1.3"
   }
 }
