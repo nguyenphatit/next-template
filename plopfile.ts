@@ -23,44 +23,6 @@ export default function plop(plop: NodePlopAPI) {
         })
   })
 
-  plop.setGenerator("base-page", {
-    description: "Create a new base page (page.tsx and layout.tsx)",
-    prompts: [
-      {
-        type: "input",
-        name: "name",
-        message: "Page name"
-      },
-      {
-        type: "confirm",
-        name: "clientComponent",
-        message: "Using client component?",
-      },
-      {
-        type: "confirm",
-        name: "motion",
-        message: "Add motion?",
-      },
-      {
-        type: "confirm",
-        name: "clientLayout",
-        message: "Using client layout?",
-      },
-    ],
-    actions: [
-      {
-        type: 'add',
-        path: 'app/{{dashCase name}}/page.tsx',
-        templateFile: 'templates/page.tsx.hbs',
-      },
-      {
-        type: 'add',
-        path: 'app/{{dashCase name}}/layout.tsx',
-        templateFile: 'templates/layout.tsx.hbs',
-      }
-    ]
-  })
-
   plop.setGenerator("page", {
     description: "Create a new page",
     prompts: [
@@ -140,5 +102,61 @@ export default function plop(plop: NodePlopAPI) {
 
       return actions;
     }
+  })
+
+  plop.setGenerator("base-page", {
+    description: "Create a new base page (page.tsx and layout.tsx)",
+    prompts: [
+      {
+        type: "input",
+        name: "name",
+        message: "Page name"
+      },
+      {
+        type: "confirm",
+        name: "clientComponent",
+        message: "Using client component?",
+      },
+      {
+        type: "confirm",
+        name: "motion",
+        message: "Add motion?",
+      },
+      {
+        type: "confirm",
+        name: "clientLayout",
+        message: "Using client layout?",
+      },
+    ],
+    actions: [
+      {
+        type: 'add',
+        path: 'app/{{dashCase name}}/page.tsx',
+        templateFile: 'templates/page.tsx.hbs',
+      },
+      {
+        type: 'add',
+        path: 'app/{{dashCase name}}/layout.tsx',
+        templateFile: 'templates/layout.tsx.hbs',
+      }
+    ]
+  })
+
+  plop.setGenerator("e2e-test", {
+    description: "Create a new e2e test",
+    prompts: [
+      {
+        type: "input",
+        name: "name",
+        message: "Test name"
+      },
+    ],
+    actions: [
+      {
+        type: 'add',
+        path: 'tests/{{dashCase name}}.spec.ts',
+        templateFile: 'templates/e2e-test.hbs',
+      }
+    ]
   })
 }
