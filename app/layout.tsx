@@ -2,8 +2,9 @@ import type { Metadata } from "next";
 import {NextIntlClientProvider} from 'next-intl';
 import { Geist, Geist_Mono } from "next/font/google";
 import { getLocale } from 'next-intl/server';
-import "../styles/globals.css";
 import { getDirection } from "@/lib/get-direction";
+import { ThemeProvider } from "@/components/theme-provider";
+import "../styles/globals.css";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -28,12 +29,14 @@ export default async function RootLayout({
   const locale = await getLocale();
   const direction = await getDirection(locale);
   return (
-    <html lang={locale} dir={direction}>
+    <html lang={locale} dir={direction} suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <NextIntlClientProvider locale={locale}>
-          {children}
+          <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+            {children}
+          </ThemeProvider>
         </NextIntlClientProvider>
       </body>
     </html>

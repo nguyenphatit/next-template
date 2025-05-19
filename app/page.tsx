@@ -1,3 +1,5 @@
+import { LocaleToggle } from "@/components/toggle-locale";
+import { ModeToggle } from "@/components/toggle-mode";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 
@@ -98,6 +100,8 @@ export default function Home() {
           />
           {t('goToNextjsOrg')} →
         </a>
+        <ModeToggle />
+        <LocaleToggle />
       </footer>
     </div>
   );
