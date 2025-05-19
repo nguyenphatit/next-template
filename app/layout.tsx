@@ -4,6 +4,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import { getLocale } from 'next-intl/server';
 import { getDirection } from "@/lib/get-direction";
 import { ThemeProvider } from "@/components/theme-provider";
+import { QueryProvider } from "@/components/query-provider";
 import "../styles/globals.css";
 
 const geistSans = Geist({
@@ -33,12 +34,14 @@ export default async function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <NextIntlClientProvider locale={locale}>
-          <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
-            {children}
-          </ThemeProvider>
-        </NextIntlClientProvider>
+        <QueryProvider>
+          <NextIntlClientProvider locale={locale}>
+            <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+              {children}
+            </ThemeProvider>
+          </NextIntlClientProvider>
+        </QueryProvider>
       </body>
     </html>
-  );
+  );  
 }
