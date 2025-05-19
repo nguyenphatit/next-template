@@ -1,5 +1,6 @@
 import type {NextConfig} from "next";
 import withBundleAnalyzer from "@next/bundle-analyzer";
+import createNextIntlPlugin from 'next-intl/plugin';
 
 const bundleAnalyzer = withBundleAnalyzer({
     enabled: process.env.ANALYZE === 'true',
@@ -8,8 +9,9 @@ const bundleAnalyzer = withBundleAnalyzer({
 const nextConfig: NextConfig = {
     serverExternalPackages: [], // ['package-name']
     experimental: {
-        optimizePackageImports: [] // ['icon-library']
+        optimizePackageImports: ['lucide-react'] // ['icon-library']
     }
 };
 
-export default bundleAnalyzer(nextConfig);
+const withNextIntl = createNextIntlPlugin();
+export default bundleAnalyzer(withNextIntl(nextConfig));
