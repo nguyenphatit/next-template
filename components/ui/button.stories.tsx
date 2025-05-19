@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from "@storybook/react";
-import { Button } from "../ui/button";
+import { Button } from "./button";
 import { PlusIcon } from "lucide-react";
 
 const meta = {
